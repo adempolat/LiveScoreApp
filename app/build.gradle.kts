@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.hilt)
+    id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -42,6 +45,43 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    //Lifecycle Extensions
+    implementation(libs.lifecycle.extensions)
+
+    //Lifecycle Runtime
+    implementation(libs.lifecycle.runtime.ktx)
+
+    //Coroutine Android
+    implementation(libs.kotlinx.coroutines.android)
+
+    //Lottie
+    implementation(libs.lottie)
+
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofitGson)
+
+    //Hilt
+    implementation(libs.hilt)
+    kapt(libs.hiltAndroidCompilerKapt)
+
+    //Okhttp
+    implementation(libs.okhttpLoggingInterceptor)
+
+    //Chucker
+    implementation(libs.chucker)
+
+    //Fragment Ktx
+    implementation(libs.fragmentKtx)
+
+    //Navigation Fragment
+    implementation(libs.navigationFragment)
+
+    //Swipe Refresh Layout
+    implementation(libs.swipeRefreshLayout)
+
+    //Coil
+    implementation(libs.coil)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
