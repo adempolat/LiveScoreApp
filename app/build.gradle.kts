@@ -36,6 +36,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures{
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -45,42 +50,22 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    //Lifecycle Extensions
     implementation(libs.lifecycle.extensions)
-
-    //Lifecycle Runtime
     implementation(libs.lifecycle.runtime.ktx)
-
-    //Coroutine Android
     implementation(libs.kotlinx.coroutines.android)
-
-    //Lottie
     implementation(libs.lottie)
-
-    //Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofitGson)
-
-    //Hilt
     implementation(libs.hilt)
     kapt(libs.hiltAndroidCompilerKapt)
-
-    //Okhttp
     implementation(libs.okhttpLoggingInterceptor)
-
-    //Chucker
     implementation(libs.chucker)
-
-    //Fragment Ktx
     implementation(libs.fragmentKtx)
-
-    //Navigation Fragment
     implementation(libs.navigationFragment)
-
-    //Swipe Refresh Layout
     implementation(libs.swipeRefreshLayout)
-
-    //Coil
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation(libs.coil)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
