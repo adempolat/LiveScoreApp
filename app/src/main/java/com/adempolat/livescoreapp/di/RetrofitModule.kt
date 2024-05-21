@@ -19,6 +19,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
+
+    // OkHttpClient sağlayıcı
     @Singleton
     @Provides
     fun apiCreator(): LiveScoreApi {
@@ -30,6 +32,7 @@ object RetrofitModule {
             .build()
             .create(LiveScoreApi::class.java)
     }
+    // Retrofit sağlayıcı
     private fun makeOkHttpClient(): OkHttpClient {
         return  OkHttpClient.Builder()
             .addInterceptor(Interceptor { chain ->
@@ -50,6 +53,13 @@ object RetrofitModule {
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(70, TimeUnit.SECONDS)
             .build()
+    }
+
+    // ApiService sağlayıcı
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): LiveScoreApi {
+        return retrofit.create(LiveScoreApi::class.java)
     }
 
 }

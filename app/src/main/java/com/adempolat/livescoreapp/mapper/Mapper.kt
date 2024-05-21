@@ -13,6 +13,7 @@ import com.adempolat.livescoreapp.model.response.dto.TeamDto
 import com.adempolat.livescoreapp.model.response.TeamScore
 import com.adempolat.livescoreapp.model.response.dto.TeamScoreDto
 
+// DTO'ları model sınıflarına dönüştüren Mapper sınıfı
 object Mapper {
 
     fun mapToDomain(dto: LiveScoresResponseDto): LiveScoresResponse {

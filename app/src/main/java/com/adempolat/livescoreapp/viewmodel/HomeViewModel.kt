@@ -37,6 +37,7 @@ class HomeViewModel @Inject constructor(
     private var currentSortOrder = SortOrder.FIRST_NEWEST
 
 
+    // Verileri almak için repository'i kullan
     fun getScores() {
         viewModelScope.launch {
             _data.value = DataState.Loading
@@ -51,6 +52,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    // Maçları filtrele
     private fun filterMatches(matches: List<Match>): List<Match> {
         return when (currentFilter) {
             FilterType.ALL -> matches
@@ -61,6 +63,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    // Maçları sırala
     private fun sortMatches(matches: List<Match>): List<Match> {
         return when (currentSortOrder) {
             SortOrder.FIRST_NEWEST -> matches.sortedByDescending { it.score.status }
@@ -68,16 +71,19 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    // Filtre türünü ayarla ve verileri yeniden al
     fun setFilter(filterType: FilterType) {
         currentFilter = filterType
         getScores()
     }
 
+    // Sıralama türünü ayarla ve verileri yeniden al
     fun setSortOrder(sortOrder: SortOrder) {
         currentSortOrder = sortOrder
         getScores()
     }
 
+    // Favori maçları yönet
     fun toggleFavorite(match: Match) {
         val updatedFavorites = _favorites.value ?: mutableSetOf()
         if (updatedFavorites.contains(match)) {

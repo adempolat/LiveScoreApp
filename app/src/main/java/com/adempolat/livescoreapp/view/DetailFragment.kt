@@ -26,6 +26,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Argümanlardan gelen verileri detay ekranında göster
         binding.apply {
             textViewHomeTeam.text = args.homeTeam
             textViewAwayTeam.text = args.awayTeam

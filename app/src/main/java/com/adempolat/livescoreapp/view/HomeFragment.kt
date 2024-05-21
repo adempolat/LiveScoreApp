@@ -46,7 +46,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        compositeAdapter = CompositeAdapter(emptyList(), findNavController())
+        // Adapter'ı initialize et
+        compositeAdapter = CompositeAdapter(emptyList(), findNavController()){match ->
+            viewModelHome.toggleFavorite(match)
+        }
+
+        // RecyclerView'a layout manager ve adapter ata
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = compositeAdapter
@@ -67,10 +72,12 @@ class HomeFragment : Fragment() {
         getObservers()
     }
 
+    // Verileri almak için ViewModel'i çağır
     private fun getScores() {
         viewModelHome.getScores()
     }
 
+    // ViewModel'deki verileri gözlemle
     private fun getObservers() {
         viewModelHome.data.observe(viewLifecycleOwner, Observer {
             it.let {
@@ -100,6 +107,7 @@ class HomeFragment : Fragment() {
         compositeAdapter.setData(displayList)
     }
 
+    // Filtreleme seçeneklerini gösteren bottom sheet'i aç
     private fun showFilterSheet() {
         val dialog = BottomSheetDialog(requireContext())
         val view = layoutInflater.inflate(R.layout.bottom_sheet_filter, null)
@@ -129,6 +137,7 @@ class HomeFragment : Fragment() {
         dialog.show()
     }
 
+    // Sıralama seçeneklerini gösteren bottom sheet'i aç
     private fun showSortSheet() {
         val dialog = BottomSheetDialog(requireContext())
         val view = layoutInflater.inflate(R.layout.bottom_sheet_sort, null)

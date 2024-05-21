@@ -18,7 +18,7 @@ class CompositeAdapter(private var data: List<Any>,private val navController: Na
     override fun getItemViewType(position: Int): Int {
         return when (data[position]) {
             is String -> TYPE_LEAGUE
-            is Data -> TYPE_MATCH
+            is Match -> TYPE_MATCH
             else -> throw IllegalArgumentException("Invalid type of data $position")
         }
     }

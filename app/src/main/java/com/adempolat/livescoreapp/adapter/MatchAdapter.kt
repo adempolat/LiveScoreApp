@@ -11,22 +11,27 @@ class MatchAdapter(
     private val onFavoriteClick: (Match) -> Unit
 ) : RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
 
+    // ViewHolder oluşturma
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
         val binding = ItemMatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MatchViewHolder(binding)
     }
 
+    // ViewHolder'a veri bağlama
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         holder.bind(matches[position])
     }
 
+    // Item sayısını döndürme
     override fun getItemCount(): Int = matches.size
 
+    // Verileri güncelleme
     fun setData(newMatches: List<Match>) {
         matches = newMatches
         notifyDataSetChanged()
     }
 
+    // ViewHolder sınıfı
     inner class MatchViewHolder(private val binding: ItemMatchBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(match: Match) {
             binding.apply {
@@ -35,10 +40,12 @@ class MatchAdapter(
                 textViewScore.text = "${match.score.homeTeamScore.regular} - ${match.score.awayTeamScore.regular}"
                 textViewRedCards.text = "Red Cards: ${match.score.homeRedCards} - ${match.score.awayRedCards}"
 
+                // Favori ikonu click
                 imageViewFavorite.setOnClickListener {
                     onFavoriteClick(match)
                 }
 
+                // Maç item click
                 root.setOnClickListener {
                     val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(
                         league = match.league,
