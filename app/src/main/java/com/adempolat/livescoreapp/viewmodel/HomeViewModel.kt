@@ -30,6 +30,9 @@ class HomeViewModel @Inject constructor(
     private val _data = MutableLiveData<DataState<List<Match>>>()
     val data: LiveData<DataState<List<Match>>> = _data
 
+    private val _favorites = MutableLiveData<MutableSet<Match>>(mutableSetOf())
+    val favorites: LiveData<Set<Match>> = _favorites
+
     private var currentFilter = FilterType.ALL
     private var currentSortOrder = SortOrder.FIRST_NEWEST
 
@@ -73,5 +76,15 @@ class HomeViewModel @Inject constructor(
     fun setSortOrder(sortOrder: SortOrder) {
         currentSortOrder = sortOrder
         getScores()
+    }
+
+    fun toggleFavorite(match: Match) {
+        val updatedFavorites = _favorites.value ?: mutableSetOf()
+        if (updatedFavorites.contains(match)) {
+            updatedFavorites.remove(match)
+        } else {
+            updatedFavorites.add(match)
+        }
+        _favorites.value = updatedFavorites
     }
 }

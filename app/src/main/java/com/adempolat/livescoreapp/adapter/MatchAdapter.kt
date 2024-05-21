@@ -7,7 +7,8 @@ import com.adempolat.livescoreapp.model.response.Match
 
 class MatchAdapter(
     private var matches: List<Match>,
-    private val navController: NavController
+    private val navController: NavController,
+    private val onFavoriteClick: (Match) -> Unit
 ) : RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
@@ -33,6 +34,10 @@ class MatchAdapter(
                 textViewAwayTeam.text = match.awayTeam.name
                 textViewScore.text = "${match.score.homeTeamScore.regular} - ${match.score.awayTeamScore.regular}"
                 textViewRedCards.text = "Red Cards: ${match.score.homeRedCards} - ${match.score.awayRedCards}"
+
+                imageViewFavorite.setOnClickListener {
+                    onFavoriteClick(match)
+                }
 
                 root.setOnClickListener {
                     val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(

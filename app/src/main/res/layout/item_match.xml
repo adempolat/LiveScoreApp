@@ -75,4 +75,14 @@
             android:textSize="10sp"
             tools:text="0 - 0" />
 
-    </LinearLayout>
+        <ImageView
+           android:id="@+id/imageViewFavorite"
+           android:layout_width="24dp"
+           android:layout_height="24dp"
+           android:src="@drawable/ic_favorite_foreground"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+</LinearLayout>
