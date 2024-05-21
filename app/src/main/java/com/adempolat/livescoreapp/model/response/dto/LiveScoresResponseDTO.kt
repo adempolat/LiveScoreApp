@@ -1,4 +1,4 @@
-package com.adempolat.livescoreapp.model.response
+package com.adempolat.livescoreapp.model.response.dto
 
 data class LiveScoresResponseDto(
     val matches: List<MatchDto>

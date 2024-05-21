@@ -1,17 +1,17 @@
 package com.adempolat.livescoreapp.mapper
 
 import com.adempolat.livescoreapp.model.response.HalfTimeScore
-import com.adempolat.livescoreapp.model.response.HalfTimeScoreDto
+import com.adempolat.livescoreapp.model.response.dto.HalfTimeScoreDto
 import com.adempolat.livescoreapp.model.response.LiveScoresResponse
-import com.adempolat.livescoreapp.model.response.LiveScoresResponseDto
+import com.adempolat.livescoreapp.model.response.dto.LiveScoresResponseDto
 import com.adempolat.livescoreapp.model.response.Match
-import com.adempolat.livescoreapp.model.response.MatchDto
+import com.adempolat.livescoreapp.model.response.dto.MatchDto
 import com.adempolat.livescoreapp.model.response.Score
-import com.adempolat.livescoreapp.model.response.ScoreDto
+import com.adempolat.livescoreapp.model.response.dto.ScoreDto
 import com.adempolat.livescoreapp.model.response.Team
-import com.adempolat.livescoreapp.model.response.TeamDto
+import com.adempolat.livescoreapp.model.response.dto.TeamDto
 import com.adempolat.livescoreapp.model.response.TeamScore
-import com.adempolat.livescoreapp.model.response.TeamScoreDto
+import com.adempolat.livescoreapp.model.response.dto.TeamScoreDto
 
 object Mapper {
 
